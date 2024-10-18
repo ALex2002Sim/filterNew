@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Форма сбора информации</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h2>Форма сбора информации</h2>
+    <div class="form-group">
+        <label for="fullname">ФИО:</label>
+        <input type="text" id="fullname" placeholder="Введите ваше ФИО">
+    </div>
+    <div class="form-group">
+        <label for="residence">Место проживания:</label>
+        <input type="text" id="residence" placeholder="Введите ваше место проживания">
+    </div>
+    <button id="submitBtn">Отправить</button>
+
+    <script>
+        document.getElementById('submitBtn').addEventListener('click', () => {
+            const formData = {
+                fullname: document.getElementById('fullname').value,
+                residence: document.getElementById('residence').value
+            };
+            Telegram.WebApp.sendData(JSON.stringify(formData));
+        });
+    </script>
+</body>
+</html>
